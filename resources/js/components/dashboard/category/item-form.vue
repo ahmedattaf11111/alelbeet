@@ -12,16 +12,9 @@
       </div>
     </div>
     <div class="row">
-      <div
-        class="col-lg-9 order-lg-1 order-2 basic-info-sec"
-        :style="
-          $i18n.locale == 'en' ? 'padding-right:10px' : 'padding-left:10px'
-        "
-      >
-        <div
-          id="basic-information"
-          class="form-container bg-white border border-radius-4 mb-30"
-        >
+      <div class="col-lg-9 order-lg-1 order-2 basic-info-sec" :style="$i18n.locale == 'en' ? 'padding-right:10px' : 'padding-left:10px'
+              ">
+        <div id="basic-information" class="form-container bg-white border border-radius-4 mb-30">
           <div class="create-item">
             <div class="title mb-4">{{ $t("BASIC_INFORMATION") }}</div>
             <form>
@@ -34,15 +27,10 @@
                         {{ $t("ARABIC") }}
                       </a>
                     </label>
-                    <input
-                      :placeholder="$t('TYPE_CATEGORY_NAME')"
-                      type="text"
-                      class="form-control"
-                      v-model="v$.name_ar.$model"
-                      :class="{
-                        'is-invalid': v$.name_ar.$error || titleArExist,
-                      }"
-                    />
+                    <input :placeholder="$t('TYPE_CATEGORY_NAME')" type="text" class="form-control"
+                      v-model="v$.name_ar.$model" :class="{
+              'is-invalid': v$.name_ar.$error || titleArExist,
+            }" />
                     <div class="invalid-feedback">
                       <div v-for="error in v$.name_ar.$errors" :key="error">
                         {{ $t("NAME") + " " + $t(error.$validator) }}
@@ -51,7 +39,7 @@
                         {{ $t("NAME") + " " + $t("EXIST") }}
                       </div>
                     </div>
-                    
+
                   </div>
                 </div>
                 <div v-else class="col-lg-12 mb-2">
@@ -62,15 +50,10 @@
                         {{ $t("ENGLISH") }}
                       </a>
                     </label>
-                    <input
-                      :placeholder="$t('TYPE_CATEGORY_NAME')"
-                      type="text"
-                      class="form-control"
-                      v-model="v$.name_en.$model"
-                      :class="{
-                        'is-invalid': v$.name_en.$error || titleArExist,
-                      }"
-                    />
+                    <input :placeholder="$t('TYPE_CATEGORY_NAME')" type="text" class="form-control"
+                      v-model="v$.name_en.$model" :class="{
+              'is-invalid': v$.name_en.$error || titleArExist,
+            }" />
                     <div class="invalid-feedback">
                       <div v-for="error in v$.name_en.$errors" :key="error">
                         {{ $t("NAME") + " " + $t(error.$validator) }}
@@ -86,51 +69,33 @@
                     <label for="exampleInputEmail1">
                       {{ $t("BASE_CATEGORY") }}
                     </label>
-                    <Multiselect
-                      @deselect="onDeselect"
-                      :placeholder="$t('SELECT_CATEGORY')"
-                      :searchable="true"
-                      v-model="base_category_id"
-                      valueProp="id"
-                      :options="categories"
-                    >
+                    <Multiselect @deselect="onDeselect" :placeholder="$t('SELECT_CATEGORY')" :searchable="true"
+                      v-model="base_category_id" valueProp="id" :options="categories">
                       <template v-slot:singlelabel="{ value }">
                         <div class="multiselect-single-label">
-                          <i
-                            style="
+                          <i style="
                               font-size: 10px !important;
                               color: #454f5b !important;
-                            "
-                            v-for="index in value.parent_counts"
-                            :key="index"
-                            :class="`${
-                              $i18n.locale == 'en'
-                                ? 'fa fa-caret-right mr-2'
-                                : 'fa fa-caret-left mr-2'
-                            }`"
-                          ></i>
+                            " v-for="index in value.parent_counts" :key="index" :class="`${$i18n.locale == 'en'
+                ? 'fa fa-caret-right mr-2'
+                : 'fa fa-caret-left mr-2'
+              }`"></i>
                           {{
-                            $i18n.locale == "en" ? value.name_en : value.name_ar
-                          }}
+              $i18n.locale == "en" ? value.name_en : value.name_ar
+            }}
                         </div>
                       </template>
                       <template v-slot:option="{ option }">
-                        <i
-                          style="
+                        <i style="
                             font-size: 10px !important;
                             color: #454f5b !important;
-                          "
-                          v-for="index in option.parent_counts"
-                          :key="index"
-                          :class="`${
-                            $i18n.locale == 'en'
-                              ? 'fa fa-caret-right mr-2'
-                              : 'fa fa-caret-left mr-2'
-                          }`"
-                        ></i>
+                          " v-for="index in option.parent_counts" :key="index" :class="`${$i18n.locale == 'en'
+                ? 'fa fa-caret-right mr-2'
+                : 'fa fa-caret-left mr-2'
+              }`"></i>
                         {{
-                          $i18n.locale == "en" ? option.name_en : option.name_ar
-                        }}
+              $i18n.locale == "en" ? option.name_en : option.name_ar
+            }}
                       </template>
                     </Multiselect>
                   </div>
@@ -140,15 +105,9 @@
                     <label for="exampleInputEmail1">
                       {{ $t("BRANDS") }}
                     </label>
-                    <Multiselect
-                      :placeholder="$t('SELECT_BRANDS')"
-                      mode="tags"
-                      :label="$i18n.locale == 'ar' ? 'name_ar' : 'name_en'"
-                      :searchable="true"
-                      v-model="brand_id"
-                      valueProp="id"
-                      :options="brands"
-                    />
+                    <Multiselect :placeholder="$t('SELECT_BRANDS')" mode="tags"
+                      :label="$i18n.locale == 'ar' ? 'name_ar' : 'name_en'" :searchable="true" v-model="brand_id"
+                      valueProp="id" :options="brands" />
                   </div>
                 </div>
                 <div class="col-lg-12 mb-2">
@@ -156,33 +115,21 @@
                     <label for="exampleInputEmail1">
                       {{ $t("PRIORITY") }}
                     </label>
-                    <input
-                      :placeholder="$t('SORTING_PRIORITY_NUMBER')"
-                      type="text"
-                      class="form-control"
-                      v-model="priority"
-                    />
+                    <input :placeholder="$t('SORTING_PRIORITY_NUMBER')" type="text" class="form-control"
+                      v-model="priority" />
                   </div>
                 </div>
               </div>
             </form>
           </div>
         </div>
-        <div
-          id="image"
-          class="form-container bg-white border border-radius-4 mb-30"
-        >
+        <div id="image" class="form-container bg-white border border-radius-4 mb-30">
           <div class="create-item">
             <div class="title mb-4">{{ $t("IMAGES") }}</div>
             <div class="row">
               <div class="col-lg-12 mb-2">
-                <Image
-                  title="Thumbnail"
-                  subTitle="CHOOSE_CATEGORY_THUMBNAIL"
-                  :selectedMedia="selectedMedia"
-                  @selectedMedia="selectedMedia = $event"
-                  :singleSelect="true"
-                />
+                <Image title="Thumbnail" subTitle="CHOOSE_CATEGORY_THUMBNAIL" :selectedMedia="selectedMedia"
+                  @selectedMedia="selectedMedia = $event" :singleSelect="true" />
               </div>
             </div>
           </div>
@@ -193,26 +140,17 @@
         </button>
       </div>
       <div class="col-lg-3 order-lg-2 order-1">
-        <div
-          class="bg-white information-container border border-radius-4 mb-30"
-        >
+        <div class="bg-white information-container border border-radius-4 mb-30">
           <div class="information">
             <div class="title">{{ $t("CATEGORY_INFORMATION") }}</div>
             <ul>
-              <a
-                id="a__basic-information"
-                @click="currentSection = 'basic-information'"
-                href="#basic-information"
-              >
+              <a id="a__basic-information" @click="currentSection = 'basic-information'" href="#basic-information">
                 <li :class="{ active: currentSection == 'basic-information' }">
                   {{ $t("BASIC_INFORMATION") }}
                 </li>
               </a>
               <a id="a__image" @click="currentSection = 'image'" href="#image">
-                <li
-                  :class="{ active: currentSection == 'image' }"
-                  class="add-new-tax"
-                >
+                <li :class="{ active: currentSection == 'image' }" class="add-new-tax">
                   {{ $t("IMAGE") }}
                 </li>
               </a>
@@ -506,19 +444,23 @@ export default {
 
 <style lang="scss">
 .category-form {
- .media-manager .head-title{
+  .media-manager .head-title {
     font-size: 15px !important;
   }
-  .media-manager .close-media i{
+
+  .media-manager .close-media i {
     font-size: 16px !important;
   }
+
   .basic-info-sec {
     padding-bottom: 400px;
   }
+
   .information-container {
     position: sticky;
     top: 90px;
   }
+
   .multiselect {
     padding: 1px 0 !important;
   }
@@ -529,27 +471,34 @@ export default {
     color: #454f5b !important;
     background: rgb(244, 246, 248) !important;
   }
+
   body[dir="rtl"] & {
     * {
       font-size: 12.5px !important;
     }
+
     .form-group {
       label {
         font-size: 13.3px !important;
       }
     }
+
     .multiselect-placeholder {
       font-size: 12.5px !important;
     }
+
     .form-control {
       font-size: 12px !important;
     }
+
     .form-control::placeholder {
       font-size: 12px;
     }
+
     .multiselect-tag {
       font-weight: 500;
     }
+
     .locale {
       border-radius: 5px;
       padding: 3px 7px;
@@ -557,27 +506,33 @@ export default {
       color: #fcac00;
       font-size: 9px !important;
       bottom: 1px;
+
       &:hover {
         color: #fcac00 !important;
         background: rgba(252, 172, 0, 0.15);
       }
     }
+
     .form-group {
       label {
         font-weight: 400 !important;
       }
     }
+
     table {
+
       th,
       td {
         font-size: 14px !important;
       }
     }
+
     .title {
       font-size: 15px !important;
       color: #212b36;
       font-weight: 550;
     }
+
     .search {
       i {
         right: 17px !important;
@@ -592,7 +547,8 @@ export default {
       width: 100px;
       will-change: transform !important;
     }
-    .breadcrumb-item + .breadcrumb-item::before {
+
+    .breadcrumb-item+.breadcrumb-item::before {
       font-family: "FontAwesome";
       content: "\f104" !important;
     }
@@ -601,11 +557,13 @@ export default {
       a * {
         font-size: 14px !important;
       }
+
       ul {
         padding: 0 30px;
         position: relative;
         margin-top: 25px;
       }
+
       li::before {
         height: 12px;
         position: absolute;
@@ -616,6 +574,7 @@ export default {
         top: 4px;
         right: -23px;
       }
+
       ul::before {
         position: absolute;
         display: block;
@@ -636,6 +595,7 @@ export default {
         outline: 1px solid #4eb529;
         border: 3px solid #fff;
       }
+
       li.active {
         color: #4eb529;
       }
@@ -644,20 +604,25 @@ export default {
         position: relative;
         margin-bottom: 15px;
       }
+
       padding: 15px 15px 20px 15px;
     }
   }
+
   body[dir="ltr"] & {
     * {
       font-size: 13px !important;
     }
+
     .form-control {
       font-size: 13px !important;
       font-weight: 500;
     }
+
     .form-control::placeholder {
       font-size: 13px;
     }
+
     .locale {
       border-radius: 5px;
       padding: 3px 7px;
@@ -665,6 +630,7 @@ export default {
       color: #fcac00;
       font-size: 10px !important;
       bottom: 1px;
+
       &:hover {
         color: #fcac00 !important;
         background: rgba(252, 172, 0, 0.15);
@@ -676,17 +642,20 @@ export default {
       color: #212b36;
       font-weight: 600;
     }
+
     .search {
       i {
         left: 17px !important;
       }
     }
+
     .information {
       ul {
         padding: 0 30px;
         position: relative;
         margin-top: 25px;
       }
+
       li::before {
         height: 11px;
         position: absolute;
@@ -697,6 +666,7 @@ export default {
         top: 3px;
         left: -23px;
       }
+
       ul::before {
         position: absolute;
         display: block;
@@ -717,6 +687,7 @@ export default {
         outline: 1px solid #4eb529;
         border: 3px solid #fff;
       }
+
       li.active {
         color: #4eb529;
       }
@@ -725,6 +696,7 @@ export default {
         position: relative;
         margin-bottom: 15px;
       }
+
       padding: 15px 15px 20px 15px;
     }
   }
@@ -733,6 +705,7 @@ export default {
     box-shadow: none;
     margin-bottom: 19px !important;
   }
+
   .save-submit {
     background: #4eb529;
     color: #fff;
@@ -746,17 +719,21 @@ export default {
     padding: 10px 0;
     border-radius: 5px;
   }
+
   .form-container {
     padding: 20px 20px 40px 20px;
     border-radius: 5px;
   }
+
   .form-control {
     padding: 21px 10px !important;
   }
+
   .information {
     a * {
       font-size: 14px !important;
     }
+
     ul {
       padding: 0 30px;
       position: relative;
@@ -767,6 +744,7 @@ export default {
       position: relative;
       margin-bottom: 15px;
     }
+
     padding: 15px 15px 20px 15px;
   }
 }

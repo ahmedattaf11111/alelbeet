@@ -1,85 +1,16 @@
 <template>
   <div class="all-blog-container">
-    <!-- ======= Breadcrumbs ======= -->
-    <div
-      class="breadcrumbs d-flex align-items-center"
-      style="background-image: url('/images/Banner.jpg')"
-    >
-      <div
-        class="container position-relative d-flex flex-column align-items-center"
-        data-aos="fade"
+    <div class="d-flex justify-content-center mt-4" v-if="pageCounts > 1">
+      <paginate
+        :prevText="''"
+        :nextText="''"
+        v-model="page"
+        :pageCount="pageCounts"
+        :clickHandler="getItems"
       >
-        <h2>{{ $t("BLOGS") }}</h2>
-        <ol>
-          <li>
-            <router-link to="/home">{{ $t("HOME") }}</router-link>
-          </li>
-          <li>{{ $t("BLOGS") }}</li>
-        </ol>
-      </div>
+      </paginate>
     </div>
-    <!-- End Breadcrumbs -->
-
-    <!-- ======= Blog Section ======= -->
-    <section id="blog" class="blog">
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4 posts-list">
-          <div v-for="item in items" :key="item" class="col-xl-4 col-md-6">
-            <div class="post-item position-relative h-100">
-              <div class="post-img position-relative overflow-hidden">
-                <img
-                  class="item-image"
-                  :src="
-                    item.media_manager
-                      ? `/uploads/${item.media_manager.hash_name}`
-                      : '/images/placeholder-thumb.png'
-                  "
-                />
-                <span class="post-date">{{ item.created_at }}</span>
-              </div>
-
-              <div class="post-content d-flex flex-column">
-                <h3 class="post-title">
-                  {{ item.name }}
-                </h3>
-
-                <div class="meta d-flex align-items-center">
-                  <div class="d-flex align-items-center">
-                    <i class="bi bi-person"></i>
-                    <span class="ps-2">{{ item.name }}</span>
-                  </div>
-                </div>
-
-                <p>
-                  {{ item.description }}
-                </p>
-
-                <hr />
-
-                <router-link
-                  :to="`/blogs/${item.id}`"
-                  class="readmore stretched-link"
-                  ><span>{{ $t("Read More") }}</span
-                  ><i class="bi bi-arrow-right"></i
-                ></router-link>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- End blog posts list -->
-        <div class="d-flex justify-content-center mt-4" v-if="pageCounts > 1">
-          <paginate
-            :prevText="''"
-            :nextText="''"
-            v-model="page"
-            :pageCount="pageCounts"
-            :clickHandler="getItems"
-          >
-          </paginate>
-        </div>
-        <!-- End blog pagination -->
-      </div>
-    </section>
+    <!-- End blog pagination -->
     <!-- End Blog Section -->
   </div>
 </template>
@@ -135,7 +66,7 @@ export default {
 
 <style lang="scss">
 .all-blog-container {
-  .page-link:hover{
+  .page-link:hover {
     cursor: pointer;
   }
   .page-link {

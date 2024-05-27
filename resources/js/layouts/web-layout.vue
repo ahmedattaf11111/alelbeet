@@ -14,7 +14,7 @@
         <a href="index.html" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="assets/img/logo.png" alt=""> -->
-          <h1><img src="/web/assets/img/white-logo.png" /></h1>
+          <!-- <h1><img src="/web/assets/img/white-logo.png" /></h1> -->
         </a>
 
         <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
@@ -99,6 +99,7 @@
     <main id="main">
       <router-view />
     </main>
+    
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
       <div class="footer-content position-relative">
